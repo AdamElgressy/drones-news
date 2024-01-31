@@ -69,13 +69,6 @@ class Service:
     def fetch_and_save_articles(self):
         articles = self.fetch_articles()
         self.save_articles(articles)
-        print(
-            db.session()
-            .query(Article)
-            .order_by(Article.publishedAt.desc())
-            .limit(ARTICLES_IN_NEWS_PAGE)
-            .all()
-        )
 
     def get_latest_articles(self, keyword: str | None) -> list[Article]:
         if keyword:
